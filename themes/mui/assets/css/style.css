@@ -1,0 +1,295 @@
+/**
+ * Color definitions
+ */
+:root {
+  --primary-color: #153558;
+  --background-color: #eee;
+  --background-panel-color: white;
+  --color: #e0e0e0;
+  --background-color-dark:#2c2c2c;
+  --background-panel-color-dark:#242424;
+}
+
+/**
+ * Body CSS
+ */
+
+html,
+body {
+  height: 100%;
+  background-color: var(--background-color);
+}
+
+html,
+body,
+input,
+textarea,
+button {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: var(--background-color-dark);
+  color: var(--color);
+}
+
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode p,
+body.dark-mode h3
+ {
+  background-color: var(--background-color-dark);
+  color: var(--color);
+}
+
+/**
+  * Layout CSS
+  */
+
+#header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+  transition: left 0.2s;
+  background-color: var(--primary-color);
+  color: var(--color);
+  .button {
+    background-color: var(--primary-color);
+    color: var(--color);
+  }
+}
+
+#sidedrawer {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  left: -200px;
+  overflow: auto;
+  z-index: 2;
+  background-color: var(--background-panel-color);
+  transition: transform 0.2s;
+}
+
+.sidedrawer-container {
+  position:fixed;
+  bottom:0;
+  display: flex;
+  justify-content: end;
+  flex-direction: column;
+}
+
+/* Dark mode styles for layout */
+body.dark-mode #header {
+  color: var(--color);
+}
+
+body.dark-mode #sidedrawer {
+  background-color: var(--background-panel-color-dark);
+  p, h3 {
+    background-color: inherit;
+  }
+}
+
+#content-wrapper {
+  min-height: 100%;
+  overflow-x: hidden;
+  margin-left: 0px;
+  transition: margin-left 0.2s;
+
+  /* sticky bottom */
+  box-sizing: border-box;
+  margin-bottom: -60px;
+  padding-bottom: 60px;
+}
+
+body.dark-mode #content-wrapper {
+  background-color: var(--background-color-dark);
+}
+
+#footer {
+  box-sizing: border-box;
+  height: 60px;
+  margin-left: 0px;
+  transition: margin-left 0.2s;
+  text-align: center;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  p {
+    background-color: inherit;
+  }
+}
+
+/* Dark mode styles for footer */
+body.dark-mode #footer {
+  background-color: var(--background-panel-color-dark);
+  color: var(--color);
+}
+
+@media (min-width: 768px) {
+  #header {
+    left: 200px;
+  }
+
+  #sidedrawer {
+    transform: translate(200px);
+  }
+
+  #content-wrapper {
+    margin-left: 200px;
+  }
+
+  #footer {
+    margin-left: 200px;
+  }
+
+  body.hide-sidedrawer #header {
+    left: 0;
+  }
+
+  body.hide-sidedrawer #sidedrawer {
+    transform: translate(0px);
+  }
+
+  body.hide-sidedrawer #content-wrapper {
+    margin-left: 0;
+  }
+
+  body.hide-sidedrawer #footer {
+    margin-left: 0;
+  }
+}
+
+/**
+  * Toggle Sidedrawer
+  */
+#sidedrawer.active {
+  transform: translate(200px);
+}
+
+/**
+  * Header CSS
+  */
+
+.sidedrawer-toggle {
+  color: var(--background-color);
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 20px;
+  margin-right: 10px;
+}
+
+.sidedrawer-toggle:hover {
+  color: var(--background-color);
+  text-decoration: none;
+}
+
+/**
+  * Sidedrawer CSS
+  */
+
+#sidedrawer-brand {
+  display: flex;
+  height: 64px;
+  justify-content: center;
+  align-items: center;
+}
+
+#sidedrawer ul {
+  list-style: none;
+  margin-bottom: 0px;
+}
+
+#sidedrawer>ul {
+  padding-left: 0px;
+}
+
+#sidedrawer>ul>li:first-child {
+  padding-top: 5px;
+}
+
+#sidedrawer strong {
+  display: block;
+  padding: 15px 22px;
+  cursor: pointer;
+}
+
+#sidedrawer .root-item {
+  display: block;
+  padding: 15px 22px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#sidedrawer h3 {
+  display: block;
+  padding: 15px 22px;
+  margin: 0px;
+}
+
+#sidedrawer strong:hover {
+  background-color: var(--background-color);
+}
+
+/* Dark mode styles for sidedrawer */
+body.dark-mode #sidedrawer strong:hover {
+  background-color: var(--background-color-dark);
+}
+
+#sidedrawer strong+ul>li {
+  padding: 6px 0px;
+}
+
+/**
+  * Footer CSS
+  */
+
+#footer {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+#footer a {
+  color: var(--background-color);
+  text-decoration: underline;
+}
+
+/* Dark mode styles for footer links */
+body.dark-mode #footer a {
+  color: var(--color);
+}
+
+.right-header-container {
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
+
+.left-header-container {
+  width: 50%;
+}
+
+.header-container-fluid {
+  display: flex;
+  width: inherit;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.icon-button {
+  background-color: transparent;
+  border: 0px;
+  cursor: pointer;
+}
+
+i.dark-mode-icon {
+  color: var(--color);
+}

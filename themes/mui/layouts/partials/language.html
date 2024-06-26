@@ -1,0 +1,25 @@
+{{ if .Site.IsMultiLingual }}
+  <div class="mui-dropdown">
+    <button class="mui-btn button" data-mui-toggle="dropdown">
+      {{ range .Site.Languages }}
+        {{ if eq . $.Site.Language }}
+          {{ .Lang | upper }}
+        {{ end }}
+      {{ end }}
+      <span class="mui-caret"></span>
+    </button>
+    <ul class="mui-dropdown__menu">
+      {{ if $.Translations }}
+        {{ range $.Translations }}
+          <li><a title="{{ .Language.LanguageName }}" href="{{ .RelPermalink }}">{{ .Language.LanguageName }}</a></li>
+        {{ end }}
+      {{ else }}
+        {{ range .Site.Languages -}}
+          {{ if ne $.Site.Language.Lang .Lang }}
+            <li><a title="EN" href="{{ .Lang | relLangURL }}">{{ .LanguageName }}*</a></li>
+          {{ end -}}
+        {{ end -}}
+      {{ end }}
+    </ul>
+  </div>
+{{ end }}

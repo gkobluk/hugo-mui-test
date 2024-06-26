@@ -1,0 +1,20 @@
+{{ $currentVersion := site.GetPage (default "latest" .Page.Params.version) }}
+{{ $versionTitle := $currentVersion.Params.version }}
+<h3>Version {{ $versionTitle }}</h3>
+{{ range $currentVersion.Sections }}
+<ul>
+  <li>
+    <strong>{{ .Title }}</strong>
+    <ul>
+      {{ range .Pages }}
+      <li><a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </li>
+</ul>
+{{ end }}
+{{ range $currentVersion.Pages }}
+{{ if .IsPage }}
+<span class="root-item"><a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a></span>
+{{ end }}
+{{ end }}

@@ -1,0 +1,61 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/png" href="/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link href="//cdn.muicss.com/mui-latest/css/mui.min.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  {{ $css := resources.Match "/css/*.css" | resources.Concat "style.css" | minify }}
+  <link rel="stylesheet" href="{{ $css.Permalink }}" type="text/css">
+  <script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+  {{ $js := resources.Match "/js/*.js" | resources.Concat "script.js" | minify }}
+  <script src="{{ $js.Permalink }}"></script>
+</head>
+<body>
+  <div id="sidedrawer" class="mui--no-user-select">
+    <div id="sidedrawer-brand" class="mui--appbar-line-height">
+      <span class="mui--text-title">{{.Site.Title}}</span>
+    </div>
+    <div class="mui-divider"></div>
+    {{ partial "menu_default.html" . }}
+    <div class="sidedrawer-container root-item">
+      {{ partial "version.html" . }}
+    </div>
+  </div>
+  <header id="header">
+    <div class="mui--appbar-line-height">
+      <div class="header-container-fluid">
+        <div class="left-header-container">
+          <a class="sidedrawer-toggle mui--visible-xs-inline-block mui--visible-sm-inline-block js-show-sidedrawer">☰</a>
+          <a class="sidedrawer-toggle mui--hidden-xs mui--hidden-sm js-hide-sidedrawer">☰</a>
+          <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">{{ .Site.Title }}</span>
+        </div>
+        <div class="right-header-container">
+          {{ partial "language.html" . }}
+          {{ partial "mode.html" . }}
+        </div>
+      </div>
+    </div>
+  </header>
+  <div id="content-wrapper">
+    <div class="mui--appbar-height"></div>
+    <div class="mui-container-fluid">
+      <br>
+      {{ .Content }}
+    </div>
+  </div>
+  <footer id="footer">
+    <div class="mui-container-fluid">
+      <br>
+      <p>{{ .Site.Title }} is a product developed by <a href="https://www.cybertec-postgresql.com/">CYBERTEC</a>.</p>
+    </div>
+  </footer>
+</body>
+</html>

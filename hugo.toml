@@ -1,0 +1,37 @@
+baseURL = "https://gkobluk.github.io/cybertec_cypex"
+title = "CYPEX"
+theme = "mui"
+
+pluralizeListTitles = false
+
+defaultContentLanguageInSubdir = true
+defaultContentLanguage = "en"
+
+[languages]
+  [languages.en]
+    contentDir = "content/en"
+    disabled = false
+    languageCode = "en-US"
+    languageDirection = "ltr"
+    languageName = "English"
+    weight = 1
+    [languages.en.params]
+      subtitle = "Reference, Tutorials, and Explanations"
+  [languages.de]
+    contentDir = "content/de"
+    disabled = false
+    languageCode = "de-DE"
+    languageDirection = "ltr"
+    languageName = "Deutsch"
+    weight = 2
+    [languages.de.params]
+      subtitle = "Referenz, Tutorials und Erklärungen"
+  [languages.es]
+    contentDir = "content/es"
+    disabled = false
+    languageCode = "en-ES"
+    languageDirection = "ltr"
+    languageName = "Español"
+    weight = 3
+    [languages.es.params]
+      subtitle = "Referencia, Tutoriales e Información adicional"

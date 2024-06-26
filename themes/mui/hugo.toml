@@ -1,0 +1,9 @@
+baseURL = "https://www.cybertec-postgresql.com/"
+title = "Cybertec Documentation"
+
+sectionPagesMenu = "main"
+
+[module]
+  [module.hugoVersion]
+    extended = false
+    min = "0.116.0"
