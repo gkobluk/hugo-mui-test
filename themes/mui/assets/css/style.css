@@ -107,6 +107,9 @@ body.dark-mode #sidedrawer {
   box-sizing: border-box;
   margin-bottom: -60px;
   padding-bottom: 60px;
+  pre {
+    background-color: var(--background-color-dark) !important;
+  }
 }
 
 body.dark-mode #content-wrapper {

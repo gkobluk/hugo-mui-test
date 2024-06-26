@@ -49,6 +49,14 @@ jQuery(function ($) {
   });
 });
 
+// ==========================================================================
+// Version switcher
+// ==========================================================================
+function switchVersion(version) {
+  const currentPathArr = arr = window.location.pathname.split("/").slice(0, -1);
+  currentPathArr.splice(-1, 1, version);
+  window.location.href = `${currentPathArr.join("/")}`;
+}
 
 $(document).ready(function () {
   function loadPageContent(url) {
