@@ -1,14 +1,25 @@
+{{ $currentVersion := .Page.Params.version }}
+{{- $lang := .Site.Language.Lang -}}
+{{- $contentDir := printf "content/%s" $lang -}}
+{{- $dirs := readDir $contentDir -}}
 <div class="version-switcher">
-  <label for="version-select">Version:</label>
-  <select id="version-select" onchange="switchVersion(this.value)">
-    {{ $currentVersion := .Page.Params.version }}
-    {{- $lang := .Site.Language.Lang -}}
-    {{- $contentDir := printf "content/%s" $lang -}}
-    {{- $dirs := readDir $contentDir -}}
-    {{- range $dir := $dirs -}}
-    {{- if $dir.IsDir -}}
-      <option value="{{ $dir.Name }}" {{ if eq $dir.Name $currentVersion }}selected{{ end }}>{{ $dir.Name }}</option>
-    {{- end -}}
-    {{- end -}}
-  </select>
+  <div class="mui-dropdown">
+    <button class="mui-btn button" data-mui-toggle="dropdown">
+      {{$name := "latest"}}
+      {{- range $dir := $dirs -}}
+        {{ if eq $dir.Name $currentVersion }}
+          {{ $name = $dir.Name }}
+        {{ end }}
+      {{ end }}
+      {{ $name }}
+      <span class="mui-caret"></span>
+    </button>
+    <ul class="mui-dropdown__menu">
+      {{ range $dir := $dirs -}}
+        {{- if $dir.IsDir -}}
+          <li><a class="lang-handler" onclick="switchVersion('{{ $dir.Name }}');" href="#"> {{ $dir.Name }}</a></li>
+        {{ end -}}
+      {{ end -}}
+    </ul>
+  </div>
 </div>

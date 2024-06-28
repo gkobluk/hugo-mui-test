@@ -1,5 +1,5 @@
 ---
-title: "Version latest Documentation"
-version: "latest"
+title: "Version v0.2 Documentation"
+version: "v0.2"
 ---
 

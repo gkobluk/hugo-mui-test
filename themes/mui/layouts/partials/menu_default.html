@@ -4,10 +4,20 @@
 {{ range $currentVersion.Sections }}
 <ul>
   <li>
-    <strong>{{ .Title }}</strong>
-    <ul>
+    <strong>
+      <i class="material-icons">folder_open</i>
+      <span class="title-text">{{ .Title }}</span>
+    </strong>
+    <ul class="menu-item">
       {{ range .Pages }}
-      <li><a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a></li>
+        {{ if .Title }}
+          <li>
+            <a href="{{ .Permalink }}" class="nav-link">
+              <i class="material-icons">file_open</i>
+              <span class="title-text">{{ .Title }}</span>
+            </a>
+        </li>
+        {{ end }}
       {{ end }}
     </ul>
   </li>
@@ -15,6 +25,13 @@
 {{ end }}
 {{ range $currentVersion.Pages }}
 {{ if .IsPage }}
-<span class="root-item"><a href="{{ .Permalink }}" class="nav-link">{{ .Title }}</a></span>
+  {{ if .Title }}
+  <span class="root-item">
+    <a href="{{ .Permalink }}" class="nav-link">
+      <i class="material-icons">file_open</i>
+      <span class="title-text">{{ .Title }}</span>
+    </a>
+  </span>
+  {{ end }}
 {{ end }}
 {{ end }}

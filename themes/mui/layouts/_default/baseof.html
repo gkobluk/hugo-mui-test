@@ -25,9 +25,6 @@
     </div>
     <div class="mui-divider"></div>
     {{ partial "menu_default.html" . }}
-    <div class="sidedrawer-container root-item">
-      {{ partial "version.html" . }}
-    </div>
   </div>
   <header id="header">
     <div class="mui--appbar-line-height">
@@ -38,6 +35,7 @@
           <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">{{ .Site.Title }}</span>
         </div>
         <div class="right-header-container">
+          {{ partial "version.html" . }}
           {{ partial "language.html" . }}
           {{ partial "mode.html" . }}
         </div>
@@ -57,5 +55,6 @@
       <p>{{ .Site.Title }} is a product developed by <a href="https://www.cybertec-postgresql.com/">CYBERTEC</a>.</p>
     </div>
   </footer>
+
 </body>
 </html>
